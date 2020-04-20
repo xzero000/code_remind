@@ -23,12 +23,15 @@ class sklearn.compose.ColumnTransformer(transformers, remainder=’drop’, spar
 簡單介紹一下transformers 和remainder 兩個引數：
 
 transformers：該引數是一個由元組組成的列表(list of tuples)，每個元組的結構為：(name, transformer, column):
-
-name: transformer的名字，隨便起一個字串即可；
-transformer: 支援fit 和transform 的estimator或者passthrough 或者drop . passthrough表示透傳，不對column指定的列做任何轉換；drop表示丟棄指定column指定的列。
-column: 指定對哪些列做轉換操作，所以可以是下標、列名等。
+        name: transformer的名字，隨便起一個字串即可；
+        transformer: 支援fit 和transform 的estimator或者passthrough 或者drop . passthrough表示透傳，不對column指定的列做任何轉換；drop表示丟棄指定column指定的列。
+        column: 指定對哪些列做轉換操作，所以可以是下標、列名等。
 remainder：這個引數的值可以是支援fit 和transform 的estimator或者passthrough 或者drop ，預設值是drop，其功能和transformers引數非常像：
-
-drop：表示將column指定的列之外的其他列都丟棄；
-passthrough：表示將column指定的列之外的其他列透傳；
-estimator：表示對column指定的列之外的其他列執行該estimator代表的轉換。
+        drop：表示將column指定的列之外的其他列都丟棄；
+        passthrough：表示將column指定的列之外的其他列透傳；
+        estimator：表示對column指定的列之外的其他列執行該estimator代表的轉換。
+        remainder 會將column指定的列之外的列丟到末尾。
+sparse_threshold : transformer need it.
+n_jobs : Numbers of jobs to run in parrallel.
+transformer_weights : The output of the transformer is multiplied by these weights. 
+http://www.studyai.cn/modules/compose.html#columntransformer
