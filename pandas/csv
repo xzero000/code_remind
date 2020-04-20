@@ -1,0 +1,6 @@
+pd.read_csv('xxx.csv',header = None,names = columnsname)
+pd.to_csv('xxx.csv',header = False,index = False)
+
+data.loc
+want change data[i][j] to x
+data.loc[[j],[i]] = x
