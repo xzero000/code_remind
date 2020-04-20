@@ -1,0 +1,34 @@
+from sklearn.cross_validation import train_test_split    -->
+from sklearn.model_selection import train_test_split
+
+cross_validation  is eliminated in new version of sklearn
+
+1. train_test_split:
+        X_train, X_test, y_train, y_test = train_test_split(array1,array2,test_size=0.25,random_state=33)
+
+        75% of array1,array2 will be X_train, y_train , 25% of array1, array2 will be X_test,y_test
+        The role of the random_state parameter is to ensure that the program is divided in the same way every time the program is run.
+
+       test_size: 選擇幾%的資料作為test。
+       random_state: 確保每次運行程式會已同樣方式做切割。
+      
+2. StandardScaler():
+        Ex: ss = StandardScaler()
+               X_train = ss.fit_transform(X_train)
+               對 X_train 中所有資料做 StandardScaler
+    
+    
+3. ColumnTransformer:
+class sklearn.compose.ColumnTransformer(transformers, remainder=’drop’, sparse_threshold=0.3, n_jobs=None, transformer_weights=None)
+簡單介紹一下transformers 和remainder 兩個引數：
+
+transformers：該引數是一個由元組組成的列表(list of tuples)，每個元組的結構為：(name, transformer, column):
+
+name: transformer的名字，隨便起一個字串即可；
+transformer: 支援fit 和transform 的estimator或者passthrough 或者drop . passthrough表示透傳，不對column指定的列做任何轉換；drop表示丟棄指定column指定的列。
+column: 指定對哪些列做轉換操作，所以可以是下標、列名等。
+remainder：這個引數的值可以是支援fit 和transform 的estimator或者passthrough 或者drop ，預設值是drop，其功能和transformers引數非常像：
+
+drop：表示將column指定的列之外的其他列都丟棄；
+passthrough：表示將column指定的列之外的其他列透傳；
+estimator：表示對column指定的列之外的其他列執行該estimator代表的轉換。
